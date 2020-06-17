@@ -1,0 +1,18 @@
+<%- include('partials/header'); -%>
+
+<h1>Home</h1>
+<p><%=homeContent%></p>
+
+    <%POSTS.forEach(post => {%>
+        <h1><%= post.title; %></h1>
+        <p><%= post.body.slice(0,100) + "..." %></p>
+        <a href="/posts/<%= post._id %>">Read More</a>
+        <!-- <input type="button" name="postID" value="<%= //post._id %>"> -->
+<%});%>
+<div class="box"></div>
+
+<form action="/compose" method="get">
+    <input type="submit" value="Compose"/>
+</form>
+
+<%- include('partials/footer'); -%>
