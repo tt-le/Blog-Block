@@ -17,15 +17,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 //DATABASE
-mongoose.connect("mongodb://localhost:27017/blogDB", {
+const ADMIN = process.env.MONGO_ADMIN;
+const PW = process.env.MONGO_PW;
+const DBNAME = process.env.DBNAME;
+const uri = `mongodb+srv://${ADMIN}:${PW}@cluster0-iykpd.mongodb.net/${DBNAME}?retryWrites=true&w=majority`;
+mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
-
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  // we're connected!
 });
 
 const postSchema = mongoose.Schema({
