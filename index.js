@@ -225,7 +225,7 @@ app.route("/compose")
           user.posts.push(newPost);
           user.save();
           res.redirect("/");
-          console.log('successfully added new posts to the user array');
+          // console.log('successfully added new posts to the user array');
         }
       });
       
